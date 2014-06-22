@@ -99,12 +99,16 @@ longdata <- melt(finalsubdf, id = c("subject", "activity"))
 tidy <- dcast(longdata, subject + activity ~ variable, mean)
 
 ## Output the tidy data. We have been working with .txt files, so let's stick
-## with that.
+## with that. Also export a .csv.
 write.table(tidy, "../Getting and cleaning data/Course_assignment/tidydata.txt", 
             sep = "\t" )
 
+write.csv(tidy, file = 
+            "../Getting and cleaning data/Course_assignment/tidydata.csv")
+
 ## Confirm that this text document looks good. Read it in, and view.
-finalcheck <- read.table("../Getting and cleaning data/Course_assignment/tidydata.txt")
+finalcheck <- read.table(
+    "../Getting and cleaning data/Course_assignment/tidydata.txt")
 View(finalcheck)
 
 
